@@ -1,4 +1,4 @@
-export const GlobalStyled = {
+export const styled = {
     color:{
         blue : '#577399',
         red : '#FE5F55',
