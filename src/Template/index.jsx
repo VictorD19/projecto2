@@ -3,10 +3,12 @@ import { Navbar } from "../Components/Navbar"
 export const TemplatePage = ({children})=>{
 
 return(
-    <main>
+    <>
         <Navbar/>
+        <main>
         {children}
+        </main>
 
-    </main>
+    </>
 )
 }

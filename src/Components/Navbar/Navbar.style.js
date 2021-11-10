@@ -7,7 +7,6 @@ justify-content: space-between;
 padding: 0 20px;
 align-items: center;
 height: 60px;
-color #ffffff;
 a{
     text-decoration: none;
     color:#ffffff;
