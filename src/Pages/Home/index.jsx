@@ -1,4 +1,4 @@
-import { CardGames } from "../../Components/CardGames"
+import { CardGames } from "../../Components/CardGame"
 import { Container } from "../../Components/Container"
 import { InputSearch } from "../../Components/InputSearch"
 import { useGameData } from "../../Context/Index"

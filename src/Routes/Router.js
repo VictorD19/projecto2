@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { DetailsGame } from "../Pages/DetailsGame";
 import { Home } from "../Pages/Home";
-import { News } from "../Pages/News";
+import { News } from "../Pages/Notices";
 import { PageNotFound } from "../Pages/PageNotFound";
 import { TemplatePage } from "../Template";
 
