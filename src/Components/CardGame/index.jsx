@@ -1,12 +1,12 @@
-import { ButtonOutline } from "../Button";
 import {
   CardStyled,
   DecriptionContainer,
   HeaderDescriptionStyled,
+  LinkStyled,
   TextDescription,
 } from "./CardGame.style";
 
-export const CardGames = ({title,image,description,platform}) => {
+export const CardGames = ({title,image,description,platform,id}) => {
 
   let plataforma = platform.split(' ').filter(type=> type === 'Web' || type === 'PC'
     )
@@ -23,7 +23,7 @@ export const CardGames = ({title,image,description,platform}) => {
         <TextDescription>
          {description}
         </TextDescription>
-        <ButtonOutline>Ver Mais</ButtonOutline>
+        <LinkStyled to=''>Ver Mais</LinkStyled>
       </DecriptionContainer>
     </CardStyled>
   );

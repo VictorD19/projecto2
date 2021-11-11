@@ -10,7 +10,7 @@ export const Home = ()=>{
         <InputSearch/>
         <TitleStyle>Total de Jogos ({listGames.length})</TitleStyle>
         <SectionStyled>
-            {listGames.map(game => <CardGames key={game.id} title={game.title} image={game.thumbnail} description={game.short_description} platform={game.platform}/> )}
+            {listGames.map(game => <CardGames key={game.id} id title={game.title} image={game.thumbnail} description={game.short_description} platform={game.platform}/> )}
         
         </SectionStyled>
     </Container>

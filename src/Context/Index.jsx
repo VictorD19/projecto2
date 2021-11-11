@@ -9,7 +9,6 @@ export const GamesProvider = ({ children }) => {
   useEffect(() => {
     (async () => {
       const games = await RapidApi.getGames();
-      console.log(games);
       setListGames(games)
         })();
   }, []);
