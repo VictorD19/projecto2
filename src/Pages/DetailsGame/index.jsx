@@ -1,62 +1,78 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router"
+import { useParams } from "react-router";
 
-import Loading from '../../Assets/loading.svg'
+import Loading from "../../Assets/loading.svg";
 import { Container } from "../../Components/Container";
-import RapidApi from "../../Database"
-import { ContainerImgStyles, LoadingContainerStyled, LoadingStyled, MainImgStyled } from "./Details.style";
+import RapidApi from "../../Database";
+import {
+  ContainerImgStyles,
+  DescripionStyled,
+  DivStyled,
+  LoadingContainerStyled,
+  LoadingStyled,
+  MainImgStyled,
+  RequerimentSystemStyled,
+} from "./Details.style";
 
+export const DetailsGame = () => {
+  const { gameId } = useParams();
+  const [gameDetails, setGameDetails] = useState(null);
 
-export const DetailsGame = ()=>{
-    const { gameId } = useParams()
-    const navegate  = useNavigate()
-    const [gameDetails, setGameDetails] = useState(null)
-    console.log(gameDetails);
-    
+  useEffect(() => {
+    (async () => {
+      const details = await RapidApi.getDetailsGame(gameId);
+      console.log(details);
+      setGameDetails(details);
+    })();
+  }, []);
 
-    useEffect(() => {
-        (async ()=>{
-            const details = await RapidApi.getDetailsGame(gameId)
-       
-            setGameDetails(details)
-        })()
-        
-    }, [])
-
-
-    return(  <Container >
-        { gameDetails === null && <LoadingContainerStyled>
-            <LoadingStyled src={Loading} alt="" />
-            <h1>Carregando detalhes do jogo...</h1>
-            </LoadingContainerStyled>  }
-        {gameDetails && 
+  return (
+    <Container>
+      {gameDetails === null && (
+        <LoadingContainerStyled>
+          <LoadingStyled src={Loading} alt="" />
+          <h1>Carregando detalhes do jogo...</h1>
+        </LoadingContainerStyled>
+      )}
+      {gameDetails && (
         <>
-        <h1>{gameDetails.title}</h1>
-        <ContainerImgStyles>
-        <MainImgStyled src={gameDetails.thumbnail} alt="" />
-        </ContainerImgStyles>
-        <div>
+          <h1>{gameDetails.title}</h1>
+          <ContainerImgStyles>
+            <MainImgStyled src={gameDetails.thumbnail} alt="" />
+          </ContainerImgStyles>
+          <DivStyled>
             <div>
-                Generos : {gameDetails.genre}
+              <h3> Generos</h3>
+              <span>{gameDetails.genre}</span>
             </div>
             <div>
-                Paginas : {gameDetails.platform}
+              <h3>Plataforma</h3>
+              <span> {gameDetails.platform}</span>
             </div>
-        </div>
-        {/* sustituir valore fda descripção */}
-        {/* { gameDetails.description} */}
-        <p style={{textAlign: 'justify'}}>
+          </DivStyled>
+          <DescripionStyled>
+            <h3>Descripção</h3>
+            {gameDetails.short_description}
+          </DescripionStyled>
+          
 
-    <strong>World of Tanks</strong> is a team-based free MMO action game exclusively focused on the armored warfare in the mid-20th century. Created by the strategy masterminds at Wargaming.net, this is a shooter with a lot of tactical elements to be taken into consideration. Choose your tanks and enter epic battles!</p> 
+          <RequerimentSystemStyled>
+            <h3>Requisitos do sistema</h3>
+            <b> Sistema Operacional: </b>
+            {gameDetails.minimum_system_requirements.os !== undefined
+              ? gameDetails.minimum_system_requirements.os
+              : "windows2"}
+            <br />
+            <b>procesador: </b>
+            {gameDetails.minimum_system_requirements.processor}
+            <br />
+            <b> memory: </b>  {gameDetails.minimum_system_requirements.memory}
+            <br />
+            <b>graficons: </b> {gameDetails.minimum_system_requirements.graphics} <br />
+            <b>disco: </b> {gameDetails.minimum_system_requirements.storage}
+          </RequerimentSystemStyled>
         </>
-        }
-
-        <div>
-            <h1>Requisitsos do sistema</h1>
-             So: {gameDetails.minimum_system_requirements.os} \n
-            procesador: {gameDetails.minimum_system_requirements.processor},
-            memory:  {gameDetails.minimum_system_requirements.memory}
-            graficons: {gameDetails.minimum_system_requirements.graphics }    ,
-            disco: {gameDetails.minimum_system_requirements.storage }     </div>
-    </Container>)
-}
+      )}
+    </Container>
+  );
+};
