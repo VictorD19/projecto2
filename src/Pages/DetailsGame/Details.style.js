@@ -25,11 +25,22 @@ h1{
 export const MainImgStyled = styled.img`
 width: 100%;
 height: 100%;
-object-fit: cover;
 `
 export const ContainerImgStyles = styled.div`
 width: 90%;
 height: 400px;
 
 
+`
+export const DivStyled = styled.div`
+display: flex;
+gap: 45px;
+`
+export const DescripionStyled = styled.div`
+h3{
+    margin: 10px 0;
+}
+`
+export const RequerimentSystemStyled = styled.div`
+margin: 10px 0;
 `

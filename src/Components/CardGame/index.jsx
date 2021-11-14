@@ -23,7 +23,7 @@ export const CardGames = ({title,image,description,platform,id}) => {
         <TextDescription>
          {description}
         </TextDescription>
-        <LinkStyled to=''>Ver Mais</LinkStyled>
+        <LinkStyled to={`/${id}`}>Ver Mais</LinkStyled>
       </DecriptionContainer>
     </CardStyled>
   );
