@@ -14,7 +14,6 @@ export const News = () => {
     (async () => {
       const news = await RapidApi.getNews();
       setNotices(news);
-      console.log(news);
     })();
   }, []);
   return (
