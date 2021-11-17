@@ -92,3 +92,7 @@ padding: 5px;
 border-radius:5px;
 color:#94101F;
 `
+export const Title = styled.h1`
+font-weight: bold;
+font-size: 25px;
+`

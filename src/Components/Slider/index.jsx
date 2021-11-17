@@ -15,8 +15,7 @@ import { useState } from "react";
 export const Slider = ({ list }) => {
   const [img, setImg] = useState(list[0]);
   const index = list.indexOf(img);
-  console.log(list);
-  console.log(index);
+ 
 
   const backImg = () => {
     if (index > 0) {

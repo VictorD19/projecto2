@@ -17,6 +17,7 @@ border-radius: 5px;
 background: transparent;
 color:  ${({ theme})=> theme.color.blue_light};
 transition: 0.3s all ease;
+text-decoration: none;
 :hover{
 background:${({ theme})=> theme.color.blue_light};
 color:  ${({ theme })=> theme.color.white};

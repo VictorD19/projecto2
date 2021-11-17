@@ -1,31 +1,35 @@
-import {  Formik } from "formik";
-import {  useEffect, memo } from "react";
-import { BiSearchAlt } from "react-icons/bi";
+import { Formik } from "formik";
+import { memo } from "react";
 import { useGameData } from "../../Context/Index";
-import { ButtonStyled, FormStyled, InputStyled } from "./InputS.style";
+import { FormStyled, InputStyled } from "./InputS.style";
+import { AutoSubmitInput } from "./AutoSubmitInput";
 
- const InputSearch = () => {
-    const {setSearchParam} = useGameData()
-    const iVSearch = {
-      paramSearch: "",
-    };
-    const getParam = (values) => setSearchParam(values)
-  
-    return (
-      <Formik initialValues={iVSearch} onSubmit={getParam}>
-        {({values,handleSubmit}) => {
-  
-           return (
-            <FormStyled>
-              <InputStyled name="paramSearch" />
-              <ButtonStyled type='submit' onClick={handleSubmit} >
-                <BiSearchAlt />
-              </ButtonStyled>
-            </FormStyled>
-          );
-        }}
-      </Formik>
-    );
-  } 
-  
-export default  memo(InputSearch)
+const InputSearch = ({ page }) => {
+  const { setSearchParam } = useGameData();
+  const iVSearch = {
+    paramSearch: "",
+  };
+  const getParam = (values) => setSearchParam(values);
+
+  return (
+    <Formik initialValues={iVSearch} onSubmit={getParam}>
+      {() => {
+        return (
+          <FormStyled>
+            <InputStyled
+              name="paramSearch"
+              placeholder={
+                page === "games"
+                  ? "Buscar jogo pelo titulo"
+                  : "Buscar noticia pelo titulo"
+              }
+            />
+            <AutoSubmitInput />
+          </FormStyled>
+        );
+      }}
+    </Formik>
+  );
+};
+
+export default memo(InputSearch);

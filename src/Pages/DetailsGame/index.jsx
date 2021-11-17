@@ -21,6 +21,7 @@ import {
   RequerimentSystemStyled,
   SpaceErrors,
   SubTitle,
+  Title,
 } from "./Details.style";
 import { getCommentarys, setCommentary } from "./funtions";
 import { Commentary } from "../../Components/Comentary";
@@ -31,9 +32,16 @@ export const DetailsGame = () => {
   const { gameId } = useParams();
   const [gameDetails, setGameDetails] = useState(null);
 
+
+    // const [ano,mes,dia] = 
+  
+  
+  // {`(${dia}/${mes}/${ano})`}
   useEffect(() => {
     (async () => {
       const details = await RapidApi.getDetailsGame(gameId);
+      const [ano,mes,dia] = details.release_date.split('-')
+      details.release_date = `${dia}/${mes}/${ano}` 
       setGameDetails(details);
       const listComentary = getCommentarys(details.id);
       setListComentarys(listComentary);
@@ -47,7 +55,8 @@ export const DetailsGame = () => {
       .required("Email é requerido"),
     comentario: Yup.string().required("Comentario é requerido"),
   });
-  console.log(gameDetails);
+
+
   return (
     <Container>
       {gameDetails === null && (
@@ -58,8 +67,13 @@ export const DetailsGame = () => {
       )}
       {gameDetails && (
         <>
-          <h1>{gameDetails.title}</h1>
-          <Slider list={[{id:gameDetails.id, image:gameDetails.thumbnail},...gameDetails.screenshots]} />
+          <Title>{gameDetails.title} {`(${gameDetails.release_date})`} </Title>
+          <Slider
+            list={[
+              { id: gameDetails.id, image: gameDetails.thumbnail },
+              ...gameDetails.screenshots,
+            ]}
+          />
           <DivStyled>
             <div>
               <h3> Generos</h3>
@@ -75,35 +89,36 @@ export const DetailsGame = () => {
             {gameDetails.short_description}
           </DescripionStyled>
 
-          <RequerimentSystemStyled>
-            <h3>Requisitos do sistema</h3>
-
-            <ListRequeriment>
-              <li>
-                <b> Sistema Operacional: </b>
-                {gameDetails.minimum_system_requirements.os !== undefined
-                  ? gameDetails.minimum_system_requirements.os
-                  : "windows2"}
-              </li>
-              <li>
-                <b>Processador: </b>
-                {gameDetails.minimum_system_requirements.processor}
-                <br />
-              </li>
-              <li>
-                <b>Memória: </b>{" "}
-                {gameDetails.minimum_system_requirements.memory}
-              </li>
-              <li>
-                <b>Gráficos: </b>{" "}
-                {gameDetails.minimum_system_requirements.graphics}
-              </li>
-              <li>
-                <b>Espaço em disco: </b>{" "}
-                {gameDetails.minimum_system_requirements.storage}
-              </li>
-            </ListRequeriment>
-          </RequerimentSystemStyled>
+          {gameDetails.minimum_system_requirements && (
+            <RequerimentSystemStyled>
+              <h3>Requisitos do sistema</h3>
+              <ListRequeriment>
+                <li>
+                  <b> Sistema Operacional: </b>
+                  {gameDetails.minimum_system_requirements.os !== undefined
+                    ? gameDetails.minimum_system_requirements.os
+                    : "windows2"}
+                </li>
+                <li>
+                  <b>Processador: </b>
+                  {gameDetails.minimum_system_requirements.processor}
+                  <br />
+                </li>
+                <li>
+                  <b>Memória: </b>{" "}
+                  {gameDetails.minimum_system_requirements.memory}
+                </li>
+                <li>
+                  <b>Gráficos: </b>{" "}
+                  {gameDetails.minimum_system_requirements.graphics}
+                </li>
+                <li>
+                  <b>Espaço em disco: </b>{" "}
+                  {gameDetails.minimum_system_requirements.storage}
+                </li>
+              </ListRequeriment>
+            </RequerimentSystemStyled>
+          )}
 
           {/* Fomulario */}
           <SubTitle>Adicionar Comentario</SubTitle>
