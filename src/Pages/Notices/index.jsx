@@ -6,7 +6,7 @@ import { SectionNoticesStyled } from "./Notice.style";
 
 import { CardNotice } from "../../Components/CardNotice";
 import { Container } from "../../Components/Container";
-import { InputSearch } from "../../Components/InputSearch";
+import  InputSearch  from "../../Components/InputSearch";
 
 export const News = () => {
   const [notices, setNotices] = useState([]);

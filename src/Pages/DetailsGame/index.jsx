@@ -47,7 +47,7 @@ export const DetailsGame = () => {
       .required("Email é requerido"),
     comentario: Yup.string().required("Comentario é requerido"),
   });
-
+  console.log(gameDetails);
   return (
     <Container>
       {gameDetails === null && (
@@ -59,7 +59,7 @@ export const DetailsGame = () => {
       {gameDetails && (
         <>
           <h1>{gameDetails.title}</h1>
-          <Slider list={gameDetails.screenshots} />
+          <Slider list={[{id:gameDetails.id, image:gameDetails.thumbnail},...gameDetails.screenshots]} />
           <DivStyled>
             <div>
               <h3> Generos</h3>

@@ -1,29 +1,28 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import RapidApi from "../Database";
+import { createContext, useContext, useState } from "react";
 
 const GamesContext = createContext();
 
 export const GamesProvider = ({ children }) => {
-  const [listGames, setListGames] = useState([]);
-
-  useEffect(() => {
-    (async () => {
-      const games = await RapidApi.getGames();
-      setListGames(games)
-        })();
-  }, []);
-
+  const [searchParam, setSearchParam] = useState('')
+  
+  // useEffect(() => {
+  //   (async () => {
+  //     const games = await RapidApi.getGames();
+  //     setListGames(games)
+  //       })();
+  // }, []);
+  // listGames, setListGames,
   return (
-    <GamesContext.Provider value={{ listGames, setListGames }}>
+    <GamesContext.Provider value={{ searchParam,setSearchParam }}>
       {children}
     </GamesContext.Provider>
   );
 };
 
 export const useGameData = () => {
-  const { listGames, setListGames } = useContext(GamesContext);
+  const { searchParam,setSearchParam  } = useContext(GamesContext);
   return {
-    listGames,
-    setListGames,
+
+    searchParam,setSearchParam 
   };
 };

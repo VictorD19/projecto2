@@ -47,7 +47,7 @@ li{
     display: flex;
     margin-bottom: 5px;
     b{
-        width: 170px;
+        width: 190px;
     }
 }
 `
