@@ -8,7 +8,7 @@ export const AppThemeProvider = ({children})=>{
     const [darkTheme, setDarkTheme] = useState(JSON.parse(localStorage.getItem('darkTheme')) ||false)
     const switchTheme = ()=>{
         setDarkTheme(value =>  !value)
-        localStorage.setItem('darkTheme',JSON.stringify(darkTheme))
+        localStorage.setItem('darkTheme',JSON.stringify(!darkTheme))
     }
     return (
         <AppThemeContext.Provider value={{darkTheme, switchTheme}}>

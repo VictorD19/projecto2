@@ -37,3 +37,9 @@ export const Switch = styled.input`
     }
   }
 `;
+export const SwitchContainer = styled.li`
+color: #fff;
+display: flex;
+align-items: center;
+gap: 5px;
+`;

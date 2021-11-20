@@ -4,17 +4,19 @@ import styled from "styled-components";
 export const FeaturedContainer = styled.section`
 background-image: url('${(props)=> props.background}');
 background-repeat: no-repeat;
-background-size: contain;
+background-size: 100%;
 width: 100%;
 height: 600px;
 color: ${({ theme})=> theme.color.white};
+border-radius: 10px;
 `
 export const TitleFeatured = styled.h1`
 font-size: 45px;
 font-weight: 900;
 `
 export const BackgroundDegrade = styled.div`
-    width: 98.5%;
+    border-radius: 10px;
+    width: inherit  ;
     height: inherit;
     background: linear-gradient(to top, ${({ theme})=> theme.color.black} 6%, transparent 94%);
     display: flex;
@@ -26,6 +28,8 @@ export const DescriptionFeatured = styled.div`
 margin-bottom: 80px;
 `
 export const DetailsFeatured = styled.div`
+border-radius: 10px;
+
 display: flex;
 gap: 15px;
 text-align: center;
@@ -40,7 +44,7 @@ h3{
         width: 70px;
         top: 22px;
         height: 2px;
-        background: ${({ theme})=> theme.color.blue};
+        background: ${({ theme})=> theme.color.primary};
         left: 0;
         right: 0;
         margin: auto;
@@ -60,15 +64,14 @@ margin-bottom:20px ;
 export const ToDetails = styled(Link)`
 
 text-decoration: none;
-background: ${({ theme})=> theme.color.blue};
+background: ${({ theme})=> theme.color.primary};
 color:  ${({ theme })=> theme.color.white};
 padding: 10px;
 margin: 10px 0;
-border: 1px solid ${({ theme})=> theme.color.blue_light};
 border-radius: 5px;
 transition: 0.3s all ease;
 :hover{
-    background: ${({ theme})=> theme.color.blue_light};
+    background: ${({ theme})=> theme.color.primary_light};
     color:  ${({ theme })=> theme.color.white};
 }
 

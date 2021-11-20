@@ -23,7 +23,7 @@ export const Home = () => {
       {listRow && listRow.games[0] && listRow.news[0] && 
       <>
       <RowList title='Jogos em Destaques' to='games'>
-                {listRow.games.map(game=><RowItem key={game.id} img={game.thumbnail} title={game.title}/> )}
+                {listRow.games.map(game=><RowItem key={game.id} img={game.thumbnail} title={game.title} id={game.id}/> )}
       </RowList>
       <RowList title='Noticias em Destaques' to='news'>
       {listRow.news.map((notice,i) => <RowItem key={i} img={notice.main_image} title={notice.title}/> )}

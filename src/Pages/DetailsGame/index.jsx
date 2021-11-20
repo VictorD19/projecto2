@@ -20,6 +20,7 @@ import { getCommentarys } from "./funtions";
 import { Commentary, SectionComentarys } from "../../Components/Comentary";
 import { Slider } from "../../Components/Slider";
 import { FormAddComentary } from "../../Components/FormAddComentary";
+import { RequerimentList } from "../../Components/RequerimentList";
 
 export const DetailsGame = () => {
   const [listComentarys, setListComentarys] = useState([]);
@@ -51,7 +52,7 @@ export const DetailsGame = () => {
       {gameDetails && (
         <>
           <Title>
-            {gameDetails.title} {`(${gameDetails.release_date})`}{" "}
+            {gameDetails.title} {`(${gameDetails.release_date})`}
           </Title>
           <Slider
             list={[
@@ -74,36 +75,7 @@ export const DetailsGame = () => {
             {gameDetails.short_description}
           </DescripionStyled>
 
-          {gameDetails.minimum_system_requirements && (
-            <RequerimentSystemStyled>
-              <h3>Requisitos do sistema</h3>
-              <ListRequeriment>
-                <li>
-                  <b> Sistema Operacional: </b>
-                  {gameDetails.minimum_system_requirements.os !== undefined
-                    ? gameDetails.minimum_system_requirements.os
-                    : "windows2"}
-                </li>
-                <li>
-                  <b>Processador: </b>
-                  {gameDetails.minimum_system_requirements.processor}
-                  <br />
-                </li>
-                <li>
-                  <b>Memória: </b>{" "}
-                  {gameDetails.minimum_system_requirements.memory}
-                </li>
-                <li>
-                  <b>Gráficos: </b>{" "}
-                  {gameDetails.minimum_system_requirements.graphics}
-                </li>
-                <li>
-                  <b>Espaço em disco: </b>{" "}
-                  {gameDetails.minimum_system_requirements.storage}
-                </li>
-              </ListRequeriment>
-            </RequerimentSystemStyled>
-          )}
+         <RequerimentList requeriments={ gameDetails.minimum_system_requirements}/>
 
           {/* Fomulario */}
           <SubTitle>Adicionar Comentario</SubTitle>
@@ -111,6 +83,7 @@ export const DetailsGame = () => {
 
           <SubTitle>Comentarios</SubTitle>
           <SectionComentarys>
+            {listComentarys.length <= 0 && <h1>Sem comentarios disponiveis</h1>}
             {listComentarys.map((comentary, i) => (
               <Commentary
                 key={i}

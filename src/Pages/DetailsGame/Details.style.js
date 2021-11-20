@@ -31,26 +31,8 @@ export const DescripionStyled = styled.div`
     margin: 10px 0;
   }
 `;
-export const RequerimentSystemStyled = styled.div`
-  margin: 20px 0;
-  border: 1px solid #141414;
-  padding: 10px;
-  background: ${({ theme})=> theme.color.blue_light};
-  border-radius: 5px;
-  h3 {
-    font-weight: 500;
-    margin-bottom: 10px;
-  }
-`;
-export const ListRequeriment = styled.ul`
-  li {
-    display: flex;
-    margin-bottom: 5px;
-    b {
-      width: 190px;
-    }
-  }
-`;
+
+
 
 export const SubTitle = styled.h3`
   margin: 10px 0;

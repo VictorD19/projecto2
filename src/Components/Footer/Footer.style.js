@@ -17,7 +17,7 @@ a{
     margin: 0 5px;
     transition: 0.3s all ease;
     :hover{
-        color: ${({ theme })=> theme.color.blue_light};
+        color: ${({ theme })=> theme.color.primary};
     }
 }
 `

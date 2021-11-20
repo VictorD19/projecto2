@@ -12,6 +12,8 @@ padding: 5px 10px;
 `
 export const DetailsStyled = styled.div`
 width: 100%;
+
+
 `
 export const LikeButtom = styled(Ai.AiOutlineLike)`
 color: green;
@@ -44,4 +46,5 @@ width: 600px;
 display: flex;
 flex-direction: column;
 gap: 8px;
+color: ${({ theme })=> theme.color.text};
 `

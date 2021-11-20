@@ -20,14 +20,14 @@ export const LinkStyled = styled(Link)`
 padding: 10px;
 text-transform: uppercase;
 letter-spacing: 0.5px;
-border: 1px solid ${({ theme})=> theme.color.blue_light};
+border: 1px solid ${({ theme})=> theme.color.primary};
 border-radius: 5px;
 background: transparent;
-color:  ${({ theme})=> theme.color.blue_light};
+color:  ${({ theme})=> theme.color.primary};
 transition: 0.3s all ease;
 text-decoration: none;
 :hover{
-background:${({ theme})=> theme.color.blue_light};
+background:${({ theme})=> theme.color.primary};
 color:  ${({ theme })=> theme.color.white};
 cursor: pointer;}
 `
@@ -49,10 +49,10 @@ h3{
     text-transform: uppercase;
 }
 span{
-    border: 1px solid ${({ theme})=>theme.color.blue};
+    border: 1px solid ${({ theme})=>theme.color.primary};
     padding: 5px;
     border-radius: 20px;
-    color: ${({ theme})=>theme.color.blue};
+    color: ${({ theme})=>theme.color.primary};
     font-size: 10px;
 }
 

@@ -1,16 +1,23 @@
+import { BsFillMoonFill, BsFillSunFill } from "react-icons/bs";
 
 import { useTheme } from "../../Context/ThemeContext";
-import { Switch } from "./Switch.style";
+import { Switch, SwitchContainer } from "./Switch.style";
 
 export const SwithTheme = () => {
 const {darkTheme,switchTheme} = useTheme()  
 
 
   return (
-    <Switch
-      type="checkbox"
-      checked={darkTheme}
-       onClick={switchTheme}
-    />
+    <SwitchContainer>
+<BsFillSunFill/>
+      <Switch
+        type="checkbox"
+        checked={darkTheme}
+        onChange={switchTheme}
+        />
+         <BsFillMoonFill/> 
+        
+      
+    </SwitchContainer>
   );
 };

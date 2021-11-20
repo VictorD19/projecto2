@@ -1,10 +1,13 @@
 import { Background, RowItenContainer } from "./RowItem.style"
+import {useNavigate} from 'react-router-dom'
+import { useCallback } from "react"
+export const RowItem = ({title,img,id})=>{
 
-export const RowItem = ({title,img})=>{
-
+    const navigate = useNavigate()
+    const toGame = useCallback(()=>{navigate(`/${id}`)},[id],)
 
     return (
-        <RowItenContainer>
+        <RowItenContainer onClick={toGame }>
             <img src={img} alt={title} />
             <Background>
             <h2>{title}</h2>

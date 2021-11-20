@@ -30,10 +30,18 @@ export const NavItemStyled = styled.li`
     height: 2px;
     left: 0px;
     bottom: 2px;
-    background: #079cc5;
+    background: ${({ theme})=>theme.color.primary};
     transition: 0.3s all ease-in;
   }
+ Link{
+   :hover{
+     color: ${({ theme})=>theme.color.primary};
+
+   }
+   
+ }
   :hover::after {
     width: 100%;
+    
   }
 `;

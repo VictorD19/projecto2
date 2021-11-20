@@ -15,12 +15,12 @@ padding: 7px;
 letter-spacing: 0.5px;
 border-radius: 5px;
 font-size: 15px;
-background: ${({ theme})=> theme.color.blue_light};
+background: ${({ theme})=> theme.color.primary};
 transition: 0.3s all ease;
 text-decoration: none;
 color:  ${({ theme })=> theme.color.white};
 :hover{
-background:${({ theme})=> theme.color.blue};
+background:${({ theme})=> theme.color.primary_light};
 cursor: pointer;
 }
 `
