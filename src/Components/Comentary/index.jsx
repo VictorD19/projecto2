@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { setListLocalStorage } from "../../Pages/DetailsGame/funtions";
-
-
 import {
   ComentaryStyled,
+  ContainerCommentarys,
   DetailsStyled,
   DisLikeButtom,
   LikeButtom,
@@ -40,13 +39,21 @@ export const Commentary = ({ commentaryData, list }) => {
       </DetailsStyled>
 
       <PointsStyled value={point}>
-        <DisLikeButtom onClick={downPoint}>-</DisLikeButtom>
+        <DisLikeButtom onClick={downPoint}></DisLikeButtom>
         <span>
 
-        {point === 0 ? point : point > 0 ? `+${point}` : point}
+        {point === 0 ? point : point > 0 ? ` +${point} ` : ` ${point} `}
         </span>
-        <LikeButtom onClick={upPoint}>+</LikeButtom>
+        <LikeButtom onClick={upPoint}></LikeButtom>
       </PointsStyled>
     </ComentaryStyled>
   );
 };
+
+export const SectionComentarys = ({ children})=>{
+  return (
+    <ContainerCommentarys>
+      {children}
+    </ContainerCommentarys>
+  )
+}

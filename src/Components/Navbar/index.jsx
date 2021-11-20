@@ -5,6 +5,7 @@ import {HiHome} from 'react-icons/hi'
 
 
 import { HeaderStyled, NavItemStyled, NavListStyled } from "./Navbar.style"
+import { SwithTheme } from "../SwichTheme"
 
 export const Navbar = ()=>{
 
@@ -22,6 +23,8 @@ export const Navbar = ()=>{
                 <NavItemStyled>
                     <Link to='/news'><ImNewspaper/> Noticias</Link>
                 </NavItemStyled>
+                <SwithTheme/>
+                
                
             </NavListStyled>
         </nav>

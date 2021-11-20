@@ -8,8 +8,8 @@ justify-content: center;
 height: 100px;
 position: relative;
     bottom: 0;
-color:  ${({ theme })=> theme.color.white};
-background: ${({ theme }) => theme.color.black};
+color:  #fff;
+background: #222831;
 a{
     color: inherit;
     text-decoration: none;

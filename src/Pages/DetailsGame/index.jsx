@@ -1,61 +1,44 @@
-import { Field, Formik, ErrorMessage } from "formik";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import * as Yup from "yup";
 
 import Loading from "../../Assets/loading.svg";
 import RapidApi from "../../Database";
 
 import { Container } from "../../Components/Container";
-import { Input, TextArea } from "../../Components/Input";
+
 import {
-  ButtonForm,
   DescripionStyled,
   DivStyled,
-  Error,
-  FormGroupStyled,
-  FormStyled,
   ListRequeriment,
   LoadingContainerStyled,
   LoadingStyled,
   RequerimentSystemStyled,
-  SpaceErrors,
   SubTitle,
   Title,
 } from "./Details.style";
-import { getCommentarys, setCommentary } from "./funtions";
-import { Commentary } from "../../Components/Comentary";
+import { getCommentarys } from "./funtions";
+import { Commentary, SectionComentarys } from "../../Components/Comentary";
 import { Slider } from "../../Components/Slider";
+import { FormAddComentary } from "../../Components/FormAddComentary";
 
 export const DetailsGame = () => {
   const [listComentarys, setListComentarys] = useState([]);
   const { gameId } = useParams();
   const [gameDetails, setGameDetails] = useState(null);
 
+  // const [ano,mes,dia] =
 
-    // const [ano,mes,dia] = 
-  
-  
   // {`(${dia}/${mes}/${ano})`}
   useEffect(() => {
     (async () => {
       const details = await RapidApi.getDetailsGame(gameId);
-      const [ano,mes,dia] = details.release_date.split('-')
-      details.release_date = `${dia}/${mes}/${ano}` 
+      const [ano, mes, dia] = details.release_date.split("-");
+      details.release_date = `${dia}/${mes}/${ano}`;
       setGameDetails(details);
       const listComentary = getCommentarys(details.id);
       setListComentarys(listComentary);
     })();
   }, [gameId]);
-
-  const validation = Yup.object().shape({
-    name: Yup.string().required("Nome é requerido"),
-    email: Yup.string()
-      .email("Digite um email valido")
-      .required("Email é requerido"),
-    comentario: Yup.string().required("Comentario é requerido"),
-  });
-
 
   return (
     <Container>
@@ -67,7 +50,9 @@ export const DetailsGame = () => {
       )}
       {gameDetails && (
         <>
-          <Title>{gameDetails.title} {`(${gameDetails.release_date})`} </Title>
+          <Title>
+            {gameDetails.title} {`(${gameDetails.release_date})`}{" "}
+          </Title>
           <Slider
             list={[
               { id: gameDetails.id, image: gameDetails.thumbnail },
@@ -122,46 +107,10 @@ export const DetailsGame = () => {
 
           {/* Fomulario */}
           <SubTitle>Adicionar Comentario</SubTitle>
-          <Formik
-            initialValues={iVComentary}
-            onSubmit={(values) =>
-              setCommentary(values, gameDetails.id, setListComentarys)
-            }
-            validationSchema={validation}
-          >
-            {({ handleSubmit, resetForm }) => {
-              return (
-                <FormStyled>
-                  <FormGroupStyled>
-                    <Input name="name" placeholder="Nome" />
-                    <Input name="email" placeholder="Email" />
-                  </FormGroupStyled>
-                  <SpaceErrors>
-                    <ErrorMessage component={Error} name="name" />
-                    <ErrorMessage component={Error} name="email" />
-                  </SpaceErrors>
-                  <Field
-                    name="comentario"
-                    placeholder="Comentario"
-                    component={TextArea}
-                  />
-                  <ErrorMessage component={Error} name="comentario" />
+          <FormAddComentary id={gameDetails.id} setList ={setListComentarys}/>
 
-                  <ButtonForm
-                    type="button"
-                    onClick={() => {
-                      handleSubmit();
-                      setTimeout(()=> resetForm(),0)
-                    }}
-                  >
-                    Enviar
-                  </ButtonForm>
-                </FormStyled>
-              );
-            }}
-          </Formik>
           <SubTitle>Comentarios</SubTitle>
-          <section>
+          <SectionComentarys>
             {listComentarys.map((comentary, i) => (
               <Commentary
                 key={i}
@@ -169,16 +118,10 @@ export const DetailsGame = () => {
                 commentaryData={comentary}
               />
             ))}
-          </section>
+          </SectionComentarys>
         </>
       )}
     </Container>
   );
 };
 
-const iVComentary = {
-  name: "",
-  email: "",
-  comentario: "",
-  points: 0,
-};

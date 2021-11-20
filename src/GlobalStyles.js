@@ -9,5 +9,7 @@ export const GlobalStyled = createGlobalStyle`
 body{
     font-family: 'Montserrat', sans-serif;
     box-sizing: border-box;
+    background: ${({ theme})=> theme.color.background};
+    color:  ${({ theme })=> theme.color.text};
 }
 `

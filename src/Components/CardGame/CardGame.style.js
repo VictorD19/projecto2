@@ -6,6 +6,8 @@ width: 258px;
 box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 transform: scale(0.98);
 transition: 0.3s all ease-out;
+background: ${({ theme})=> theme.color.white};
+color:  ${({ theme })=> theme.color.black};
 img{
     width: 100%;
 }

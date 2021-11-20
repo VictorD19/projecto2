@@ -39,7 +39,7 @@ export const Background = styled.span`
     position: absolute;
 display: flex;
     align-items: flex-end;
-    background: linear-gradient(to top, #384451 1%, transparent 98%);
+    background: linear-gradient(to top, ${({ theme})=> theme.color.black} 1%, transparent 98%);
     top: 0;
     bottom: 0;
     left: 0;

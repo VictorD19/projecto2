@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const HeaderStyled = styled.header`
-background: ${({ theme }) => theme.color.black};
+background: #222831;
 display: flex;
 justify-content: space-between;
 padding: 0 20px;

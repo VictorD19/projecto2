@@ -4,11 +4,13 @@ import styled from "styled-components";
 export const InputStyled = styled(Field)`
 outline: none;
 border: 0;
-border: 1px solid ${({ theme})=> theme.color.gray};
-border-radius: 6px 0 0 6px;
+border: 1px solid ${({ theme})=> theme.color.black_light};
+border-radius:  6px;
 height: 35px;
 padding: 3px;
 width: 100%;
+
+color:  ${({ theme })=> theme.color.black};
 
 `
 export const FormStyled = styled.form`

@@ -5,7 +5,8 @@ display: flex;
 height: 210px;
 gap: 30px;
 box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-
+background: ${({ theme})=> theme.color.white};
+color:  ${({ theme })=> theme.color.black};
 img{
     width: 356px;
     height: 100%;

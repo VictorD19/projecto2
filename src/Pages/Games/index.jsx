@@ -5,11 +5,6 @@ import InputSearch from "../../Components/InputSearch";
 import { useGameData } from "../../Context/Index";
 import { SectionStyled, TitleStyle } from "./Games.style";
 
-import {
-  LoadingContainerStyled,
-  LoadingStyled,
-} from "../DetailsGame/Details.style";
-import Loading from "../../Assets/loading.svg";
 import { LoaderCardGame } from "../../Components/Loaders";
 
 const Home = () => {

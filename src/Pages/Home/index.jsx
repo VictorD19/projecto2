@@ -16,7 +16,6 @@ export const Home = () => {
       setListRow({ news, games })
     }
   }, [listGame, notices, getListRow]);
-  console.log(listRow);
   return (
     // recebo os daods poren um poco atrasado
     <Container>

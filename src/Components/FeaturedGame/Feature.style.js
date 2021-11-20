@@ -16,7 +16,7 @@ font-weight: 900;
 export const BackgroundDegrade = styled.div`
     width: 98.5%;
     height: inherit;
-    background: linear-gradient(to top, #384451 6%, transparent 94%);
+    background: linear-gradient(to top, ${({ theme})=> theme.color.black} 6%, transparent 94%);
     display: flex;
     padding: 0 30px;
     justify-content:flex-end;
