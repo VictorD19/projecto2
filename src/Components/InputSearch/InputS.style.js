@@ -18,7 +18,7 @@ width: 100%;
 export const ButtonStyled = styled.button`
 background: ${({ theme })=> theme.color.blue};
 color: ${({ theme })=> theme.color.white};
-border-radius: 0 6px 6px 0;
+border-radius:6px;
 border: none;
 width: 60px;
 font-size: 22px;

@@ -1,7 +1,4 @@
-import { useEffect, useState } from "react";
-
-import RapidApi from "../../Database";
-import { TitleStyle } from "../Home/Home.style";
+import { TitleStyle } from "../Games/Games.style";
 import { SectionNoticesStyled } from "./Notice.style";
 
 import { CardNotice } from "../../Components/CardNotice";
@@ -12,24 +9,13 @@ import { LoadingContainerStyled, LoadingStyled } from "../DetailsGame/Details.st
 import Loading from '../../Assets/loading.svg'
 
 export const News = () => {
-  const [notices, setNotices] = useState([]);
-  const {searchParam, getNewList} = useGameData()
- console.log(searchParam);
+  const {searchParam,notices} = useGameData()
 
-  useEffect(() => {
-    (async () => {
-      const news = await RapidApi.getNews();
-      console.log(news);
-      setNotices(news);
-      getNewList(news,searchParam,setNotices)
-
-    })();
-  }, [searchParam,getNewList]);
 
   return (
     <Container>
       <InputSearch />
-      <TitleStyle>Todas as notícias </TitleStyle>
+      <TitleStyle>{searchParam.paramSearch !== '' ? `Resultado para "${searchParam.paramSearch}" ( ${notices.length} )`:'Todas as notícias'  } </TitleStyle>
       <SectionNoticesStyled>
       {notices.length <= 0 && <LoadingContainerStyled>
           <LoadingStyled src={Loading} alt="" />

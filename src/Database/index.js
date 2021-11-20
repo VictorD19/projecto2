@@ -1,10 +1,10 @@
 import axios from "axios";
-const baseUrl = "https://mmo-games.p.rapidapi.com";
+const baseUrl = process.env.REACT_APP_API;
 const config = {
   method: "GET",
   headers: {
-    "x-rapidapi-host": "mmo-games.p.rapidapi.com",
-    "x-rapidapi-key": "80d8a24185msh4e11ba47f426b7dp1fbc1fjsne51908dec1ea",
+    "x-rapidapi-host": process.env.REACT_APP_HOST,
+    "x-rapidapi-key": process.env.REACT_APP_KEY,
   },
 };
 

@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import * as Ai from 'react-icons/ai' 
+
 
 export const ComentaryStyled = styled.article`
 width: 100%;
@@ -8,21 +10,25 @@ min-height: 50px;
 export const DetailsStyled = styled.div`
 width: 500px;
 `
-export const ButtonPlus = styled.button`
-    width: 40px;
-    height: 20px;
-    border-radius: 1px 50%;
-    border: none;
-    font-size: 20px;
-    background: #c8c8c8;
+export const LikeButtom = styled(Ai.AiOutlineLike)`
+color: green;
+font-size: 20px;
+:hover{
     cursor: pointer;
-    transition: .3s all ease;
-    color: #fff;
-    :hover{
-    background: #787878;
-
-    }
+    transform: scale(1.1);
+}
 `
+export const DisLikeButtom = styled(Ai.AiOutlineDislike)`
+color: red;
+font-size: 20px;
+:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+
+`
+
 export const PointsStyled = styled.div`
 color: ${({value})=> value === 0 ? '#000000' :  value > 0 ? 'green' : 'red'};
 width: 150px;

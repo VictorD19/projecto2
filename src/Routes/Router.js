@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { DetailsGame } from "../Pages/DetailsGame";
-import  Home  from "../Pages/Home";
+import  Games  from "../Pages/Games";
+import { Home } from "../Pages/Home";
 import { News } from "../Pages/Notices";
 import { PageNotFound } from "../Pages/PageNotFound";
 import { TemplatePage } from "../Template";
@@ -11,6 +12,7 @@ export const Routers = () => {
       <TemplatePage>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/games" element={<Games />} />
           <Route path="/:gameId" element={<DetailsGame />} />
           <Route path="/news" element={<News />} />
           <Route path="/not-found" element={<PageNotFound />} />

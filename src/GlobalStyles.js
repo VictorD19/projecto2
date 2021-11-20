@@ -9,6 +9,5 @@ export const GlobalStyled = createGlobalStyle`
 body{
     font-family: 'Montserrat', sans-serif;
     box-sizing: border-box;
-
 }
 `

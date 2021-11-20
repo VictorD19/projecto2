@@ -4,8 +4,14 @@ import styled from "styled-components";
 export const CardStyled =styled.article`
 width: 258px;
 box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+transform: scale(0.98);
+transition: 0.3s all ease-out;
 img{
     width: 100%;
+}
+:hover{
+    transform: scale(1);
+    cursor:pointer;
 }
 `
 export const LinkStyled = styled(Link)`
