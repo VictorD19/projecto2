@@ -3,6 +3,12 @@ import { BackgroundDegrade, Description, DescriptionFeatured, DetailsFeatured, F
 
 export const FeaturedGame = () => {
   const { featuredGame } = useGameData();
+    if(featuredGame){
+      if ('short_description' in featuredGame) {
+        featuredGame.short_description = featuredGame.short_description.substring(0,150) + '...'
+      }
+    }
+ 
   return (
     <>
       {featuredGame && (

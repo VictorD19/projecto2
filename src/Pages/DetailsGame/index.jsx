@@ -151,6 +151,7 @@ export const DetailsGame = () => {
                     type="button"
                     onClick={() => {
                       handleSubmit();
+                      setTimeout(()=> resetForm(),0)
                     }}
                   >
                     Enviar

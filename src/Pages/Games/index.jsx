@@ -10,9 +10,13 @@ import {
   LoadingStyled,
 } from "../DetailsGame/Details.style";
 import Loading from "../../Assets/loading.svg";
+import { LoaderCardGame } from "../../Components/Loaders";
 
 const Home = () => {
   const { searchParam, listGame } = useGameData();
+  const list = [<LoaderCardGame/>,<LoaderCardGame/>,<LoaderCardGame/>,<LoaderCardGame/>,<LoaderCardGame/>,<LoaderCardGame/>,<LoaderCardGame/>,<LoaderCardGame/>]
+ 
+
 
   return (
     <Container>
@@ -20,16 +24,16 @@ const Home = () => {
       <TitleStyle>
         {searchParam.paramSearch !== ""
           ? `Resultado para "${searchParam.paramSearch}"`
-          : "Total de Jogos"}{" "}
+          : "Total de Jogos"}
         ( {listGame.length} )
       </TitleStyle>
 
-      {listGame.length <= 0 && (
-        <LoadingContainerStyled>
-          <LoadingStyled src={Loading} alt="" />
-          <h1>Carregando lista de jogo...</h1>
-        </LoadingContainerStyled>
-      )}
+      {listGame.length <= 0 && 
+         <div >
+           {list.map(item => item)}
+         </div>
+    
+      }
 
       {listGame.length > 0 && (
         <SectionStyled>
