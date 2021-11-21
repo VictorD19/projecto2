@@ -57,7 +57,7 @@ export const FormAddComentary = ({id,setList})=>{
                   console.log(errors);
                   handleSubmit();
                   if(!('name' in errors || 'email' in errors || 'comentario' in errors )){
-                    setTimeout(()=> resetForm(),0)
+                    setTimeout(()=> resetForm(),100)
                   }
                 }}
               >

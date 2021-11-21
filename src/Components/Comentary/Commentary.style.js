@@ -46,5 +46,5 @@ width: 600px;
 display: flex;
 flex-direction: column;
 gap: 8px;
-color: ${({ theme })=> theme.color.black};
+color: ${({ theme })=> theme.color.text};
 `

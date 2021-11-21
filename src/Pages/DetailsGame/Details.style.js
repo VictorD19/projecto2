@@ -28,6 +28,7 @@ export const DivStyled = styled.div`
 `;
 export const DescripionStyled = styled.div`
   h3 {
+    
     margin: 10px 0;
   }
 `;
