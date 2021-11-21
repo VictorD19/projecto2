@@ -54,9 +54,9 @@ export const FormAddComentary = ({id,setList})=>{
               <ButtonForm
                 type="button"
                 onClick={() => {
-                  console.log(errors);
                   handleSubmit();
                   if(!('name' in errors || 'email' in errors || 'comentario' in errors )){
+
                     setTimeout(()=> resetForm(),100)
                   }
                 }}

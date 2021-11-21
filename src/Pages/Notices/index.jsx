@@ -10,7 +10,6 @@ import { Not_Results } from "../../Components/Not_Result/Index";
 export const News = () => {
   const {state} = useGameData()
 const {listResultNews,searchParam, news} = state
-console.log(listResultNews,news);
   const listNews = listResultNews.length !== 0 ? listResultNews : news
   return (
     <Container>

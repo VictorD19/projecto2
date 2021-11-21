@@ -10,7 +10,6 @@ export const RequerimentList = ({requeriments})=>{
     } 
    if (!requeriments) {
     requeriments = {...auxState }
-       console.log('jo existe');
        
    }
     return(

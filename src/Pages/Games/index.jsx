@@ -11,7 +11,6 @@ const GamesPage = () => {
   const { state ,getNewList} = useGameData();
   const {games,listResultGames,searchParam} = state
   const list = new Array(10)
-  console.log(games);
 
   const listgames = listResultGames.length !== 0 ? listResultGames : games
 
