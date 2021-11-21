@@ -5,8 +5,6 @@ import { CardNotice } from "../../Components/CardNotice";
 import { Container } from "../../Components/Container";
 import  InputSearch  from "../../Components/InputSearch";
 import { useGameData } from "../../Context/Index";
-import { LoadingContainerStyled, LoadingStyled } from "../DetailsGame/Details.style";
-import Loading from '../../Assets/loading.svg'
 import { Not_Results } from "../../Components/Not_Result/Index";
 
 export const News = () => {
@@ -18,8 +16,7 @@ export const News = () => {
       <InputSearch />
       <TitleStyle>{searchParam.paramSearch !== '' ? `Resultado para "${searchParam.paramSearch}" ( ${notices.length} )`:'Todas as notícias'  } </TitleStyle>
       <SectionNoticesStyled>
-      {notices.length <= 0 && <Not_Results/>}
-        {notices.map((notice) => (
+      {notices.length <= 0 ? <Not_Results/> : notices.map((notice) => (
           <CardNotice
           key={notice.id}
             title={notice.title}
@@ -28,6 +25,7 @@ export const News = () => {
             description={notice.short_description}
           />
         ))}
+        
 
       
       </SectionNoticesStyled>

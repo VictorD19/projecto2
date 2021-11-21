@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { CardNotice } from "../../Components/CardNotice";
 import { Container } from "../../Components/Container";
 import { FeaturedGame } from "../../Components/FeaturedGame";
 import { RowList } from "../../Components/RowList";
@@ -25,8 +26,12 @@ export const Home = () => {
       <RowList title='Jogos em Destaques' to='games'>
                 {listRow.games.map(game=><RowItem key={game.id} img={game.thumbnail} title={game.title} id={game.id}/> )}
       </RowList>
-      <RowList title='Noticias em Destaques' to='news'>
-      {listRow.news.map((notice,i) => <RowItem key={i} img={notice.main_image} title={notice.title}/> )}
+      <RowList title='Noticias em Destaques' to='news' direction='column'>
+      {listRow.news.map((notice,i) => <CardNotice key={notice.id}
+            title={notice.title}
+            image={notice.main_image}
+            url={notice.article_url}
+            description={notice.short_description}/> )}
       </RowList>
             
       </>

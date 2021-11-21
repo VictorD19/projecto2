@@ -12,10 +12,9 @@ export const Routers = () => {
       <TemplatePage>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/games" element={<Games />} />
-          <Route path="/:gameId" element={<DetailsGame />} />
-          <Route path="/news" element={<News />} />
-          <Route path="/not-found" element={<PageNotFound />} />
+          <Route path="games" element={<Games />} />
+          <Route path="game/:gameId" element={<DetailsGame />} />
+          <Route path="news" element={<News />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </TemplatePage>

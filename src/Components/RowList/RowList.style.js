@@ -9,6 +9,8 @@ export const RowListHeader = styled.div`
 `
 export const RowListContainer = styled.section`
 padding: 10px 0;
+display: flex;
+flex-direction: column;
 `
 export const LinkStyled = styled(Link)`
 padding: 7px;
@@ -23,4 +25,9 @@ color:  ${({ theme })=> theme.color.white};
 background:${({ theme})=> theme.color.primary_light};
 cursor: pointer;
 }
+`
+export const ContainerFeatured = styled.div`
+display : flex;
+flex-direction: ${({ direction})=> direction || 'row'};
+gap:5px;
 `

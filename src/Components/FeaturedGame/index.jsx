@@ -25,7 +25,7 @@ export const FeaturedGame = () => {
                 <h3>Plataforma  <br /><small> {featuredGame.platform} </small></h3>
               </DetailsFeatured>
               <Description>{featuredGame.short_description}</Description>
-              <ToDetails to={`/${featuredGame.id}`}>Ver mas...</ToDetails>
+              <ToDetails to={`game/${featuredGame.id}`}>Ver mas...</ToDetails>
             </DescriptionFeatured>
           </BackgroundDegrade>
         </FeaturedContainer>

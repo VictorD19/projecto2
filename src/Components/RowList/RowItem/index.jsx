@@ -4,7 +4,7 @@ import { useCallback } from "react"
 export const RowItem = ({title,img,id})=>{
 
     const navigate = useNavigate()
-    const toGame = useCallback(()=>{navigate(`/${id}`)},[id],)
+    const toGame = useCallback(()=>{navigate(`game/${id}`)},[id,navigate])
 
     return (
         <RowItenContainer onClick={toGame }>

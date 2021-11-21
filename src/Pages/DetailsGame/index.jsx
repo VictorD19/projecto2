@@ -9,10 +9,8 @@ import { Container } from "../../Components/Container";
 import {
   DescripionStyled,
   DivStyled,
-  ListRequeriment,
   LoadingContainerStyled,
   LoadingStyled,
-  RequerimentSystemStyled,
   SubTitle,
   Title,
 } from "./Details.style";

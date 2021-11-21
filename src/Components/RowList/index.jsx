@@ -1,8 +1,8 @@
 
-import { LinkStyled, RowListContainer, RowListHeader } from "./RowList.style"
+import { ContainerFeatured, LinkStyled, RowListContainer, RowListHeader } from "./RowList.style"
 
 
-export const RowList = ({title,children,to})=>{
+export const RowList = ({title,children,to,direction})=>{
   
     return (
         <RowListContainer >
@@ -10,9 +10,9 @@ export const RowList = ({title,children,to})=>{
             <h1>{title}</h1>
              <LinkStyled to={`/${to}`} >Ver mas...</LinkStyled>
             </RowListHeader>
-            <div style={{display:'flex',gap:'5px'}}>
+            <ContainerFeatured direction={direction} >
             {children}
-            </div>
+            </ContainerFeatured>
         </RowListContainer>
         )
 }

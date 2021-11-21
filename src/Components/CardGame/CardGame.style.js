@@ -8,8 +8,11 @@ transform: scale(0.98);
 transition: 0.3s all ease-out;
 background: ${({ theme})=> theme.color.white};
 color:  ${({ theme })=> theme.color.black};
+border-radius: 10px;
 img{
     width: 100%;
+border-radius: 10px 10px 0 0;
+
 }
 :hover{
     transform: scale(1);
@@ -45,6 +48,7 @@ align-items: center;
 width: 100%;
 margin: 6px 0 ;
 font-size: 14px;
+
 h3{
     text-transform: uppercase;
 }
