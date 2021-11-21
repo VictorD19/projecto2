@@ -1,20 +1,24 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+} from "react";
 import RapidApi from "../Database";
 
 const GamesContext = createContext();
 
-// Cria lista com os parametro de busqueda
-const getNewList = (lista, param, setFuntion) => {
-  let tempList = [...lista];
-  if (param.paramSearch) {
-    tempList = lista.filter(
-      ({ title }) =>
-        title.toLowerCase().includes(param.paramSearch.toLowerCase())
-      // || description.toLowerCase().includes(param.paramSearch.toLowerCase())
-    );
-  }
-  setFuntion(tempList);
+const initialState = {
+  games: [],
+  news: [],
+  searchParam: "",
+  featuredGame: null,
+  listResultGames: [],
+  listResultNews: [],
+  listRows: {},
 };
+
+// Cria lista com os parametro de busqueda
 
 const getListRow = (lista) => {
   const listRow = [];
@@ -25,49 +29,73 @@ const getListRow = (lista) => {
   }
   return listRow;
 };
+const reducer = (state, action) => {
+  switch (action.method) {
+    case "SetListGames":
+      return { ...state, games: action.value };
+    case "SetListNews":
+      return { ...state, news: action.value };
+    case "FeaturedGame":
+      return { ...state, featuredGame: action.value };
+    case "GetParamSearch":
+      return { ...state, searchParam: action.value };
+    case "GetListResultGames":
+      return { ...state, listResultGames: action.value };
+    case "GetListResultNews":
+      return { ...state, listResultNews: action.value };
+    case "SetListRow":
+      return { ...state, listRows: action.value };
+    default:
+      return initialState;
+  }
+};
 
 export const GamesProvider = ({ children }) => {
-
-  const [searchParam, setSearchParam] = useState("");
-  const [listGame, setListGame] = useState([]);
-  const [notices, setNotices] = useState([]);
-  const [featuredGame, setFeatureGame] = useState(null);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
 
+  const getNewList = (lista, param,type) => {
+    const method = type ==='games' ? "GetListResultGames" : 'GetListResultNews'
+    let tempList = [...lista];
+    if (param.paramSearch) {
+      tempList = lista.filter(
+        ({ title }) =>
+          title.toLowerCase().includes(param.paramSearch.toLowerCase())
+        // || description.toLowerCase().includes(param.paramSearch.toLowerCase())
+      );
+    }
+    dispatch({ method, value: tempList });
+  };
 
   // Lista de games
   useEffect(() => {
     (async () => {
       const games = await RapidApi.getGames();
-      setListGame(games);
-      getNewList(games, searchParam, setListGame);
+      dispatch({ method: "SetListGames", value: games });
+      getNewList(games, state.searchParam,'games');
 
       // Selecion de um jogo aleatorio
       const randomGame = Math.floor(Math.random() * (games.length - 1));
       const game = games[randomGame];
-      setFeatureGame(game);
+      dispatch({ method: "FeaturedGame", value: game });
     })();
-  }, [searchParam]);
+  }, [state.searchParam]);
 
   // Lista de noticias
   useEffect(() => {
     (async () => {
       const news = await RapidApi.getNews();
-      setNotices(news);
-      getNewList(news, searchParam, setNotices);
+      dispatch({ method: "SetListNews", value: news });
+      getNewList(news, state.searchParam,'news');
     })();
-  }, [searchParam]);
+  }, [state.searchParam]);
 
   return (
     <GamesContext.Provider
       value={{
-        searchParam,
-        setSearchParam,
-        getNewList,
-        listGame,
-        notices,
-        featuredGame,
         getListRow,
+        state,
+        dispatch,
       }}
     >
       {children}
@@ -77,23 +105,13 @@ export const GamesProvider = ({ children }) => {
 
 export const useGameData = () => {
   const {
-    searchParam,
-    setSearchParam,
-    getNewList,
-    listGame,
-    notices,
-    featuredGame,
-    getListRow,  dark
+    getListRow,
+    state,
+    dispatch,
   } = useContext(GamesContext);
   return {
-   
-    notices,
-    listGame,
-    getNewList,
-    searchParam,
-    setSearchParam,
-    featuredGame,
     getListRow,
-    dark
+    state,
+    dispatch,
   };
 };

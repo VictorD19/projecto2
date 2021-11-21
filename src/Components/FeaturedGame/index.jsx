@@ -2,7 +2,9 @@ import { useGameData } from "../../Context/Index";
 import { BackgroundDegrade, Description, DescriptionFeatured, DetailsFeatured, FeaturedContainer, TitleFeatured, ToDetails } from "./Feature.style";
 
 export const FeaturedGame = () => {
-  const { featuredGame } = useGameData();
+  const { state} = useGameData();
+  const { featuredGame} = state
+  
     if(featuredGame){
       if ('short_description' in featuredGame) {
         featuredGame.short_description = featuredGame.short_description.substring(0,150) + '...'

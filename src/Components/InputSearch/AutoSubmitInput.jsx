@@ -4,11 +4,11 @@ import { useGameData } from "../../Context/Index"
 
 export const AutoSubmitInput = ()=>{
     const {values,submitForm} = useFormikContext()
-    const {setSearchParam } = useGameData()
+    const {dispatch } = useGameData()
         useEffect(() => {
-        setSearchParam(values)
+            dispatch({method:'GetParamSearch',value: values})
         submitForm()
      
-    },[values,submitForm,setSearchParam])
+    },[values,submitForm,dispatch])
     return <></>
 }

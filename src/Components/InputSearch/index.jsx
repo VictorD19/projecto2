@@ -5,11 +5,11 @@ import { FormStyled, InputStyled } from "./InputS.style";
 import { AutoSubmitInput } from "./AutoSubmitInput";
 
 const InputSearch = ({ page }) => {
-  const { setSearchParam } = useGameData();
+  const { dispatch } = useGameData();
   const iVSearch = {
     paramSearch: "",
   };
-  const getParam = (values) => setSearchParam(values);
+  const getParam = (values) =>  dispatch({method:'GetParamSearch',value: values});
 
   return (
     <Formik initialValues={iVSearch} onSubmit={getParam}>

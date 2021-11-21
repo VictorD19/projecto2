@@ -8,15 +8,15 @@ import { useGameData } from "../../Context/Index";
 import { Not_Results } from "../../Components/Not_Result/Index";
 
 export const News = () => {
-  const {searchParam,notices} = useGameData()
-
+  const {state} = useGameData()
+const {listResultNews,searchParam } = state
 
   return (
     <Container>
       <InputSearch />
-      <TitleStyle>{searchParam.paramSearch !== '' ? `Resultado para "${searchParam.paramSearch}" ( ${notices.length} )`:'Todas as notícias'  } </TitleStyle>
+      <TitleStyle>{searchParam.paramSearch !== '' ? `Resultado para "${searchParam.paramSearch}" ( ${listResultNews.length} )`:'Todas as notícias'  } </TitleStyle>
       <SectionNoticesStyled>
-      {notices.length <= 0 ? <Not_Results/> : notices.map((notice) => (
+      {listResultNews.length <= 0 ? <Not_Results/> : listResultNews.map((notice) => (
           <CardNotice
           key={notice.id}
             title={notice.title}

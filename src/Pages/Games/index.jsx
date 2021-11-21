@@ -8,7 +8,8 @@ import { SectionStyled, TitleStyle } from "./Games.style";
 import { LoaderCardGame } from "../../Components/Loaders";
 
 const Home = () => {
-  const { searchParam, listGame } = useGameData();
+  const { state } = useGameData();
+  const {listResultGames,searchParam} = state
   const list = [<LoaderCardGame/>,<LoaderCardGame/>,<LoaderCardGame/>,<LoaderCardGame/>,<LoaderCardGame/>,<LoaderCardGame/>,<LoaderCardGame/>,<LoaderCardGame/>]
  
 
@@ -20,19 +21,19 @@ const Home = () => {
         {searchParam.paramSearch !== ""
           ? `Resultado para "${searchParam.paramSearch}"`
           : "Total de Jogos"}
-        ( {listGame.length} )
+        ( {listResultGames.length} )
       </TitleStyle>
 
-      {listGame.length <= 0 && 
+      {listResultGames.length <= 0 && 
          <div >
            {list.map(item => item)}
          </div>
     
       }
 
-      {listGame.length > 0 && (
+      {listResultGames.length > 0 && (
         <SectionStyled>
-          {listGame.map((game) => (
+          {listResultGames.map((game) => (
             <CardGames
               key={game.id}
               id={game.id}

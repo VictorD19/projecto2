@@ -8,8 +8,10 @@ import {
 
 export const CardGames = ({title,image,description,platform,id}) => {
 
-  let plataforma = platform.split(' ').filter(type=> type === 'Web' || type === 'PC'
-    )
+  
+    let [value1,value2] = platform ? platform.split(' ').filter(type=> type === 'Web' || type === 'PC') : ''
+    const plataforma = value2 ? `${value1} / ${value2}` : value1
+ 
   return (
     <CardStyled>
       <img
@@ -18,7 +20,7 @@ export const CardGames = ({title,image,description,platform,id}) => {
       />
       <DecriptionContainer>
         <HeaderDescriptionStyled>
-          <h3>{title}</h3>  <span>{plataforma.join(' / ')}</span> 
+          <h3>{title}</h3>  <span>{plataforma}</span> 
         </HeaderDescriptionStyled>
         <TextDescription>
          {description}
