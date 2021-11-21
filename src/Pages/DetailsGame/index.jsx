@@ -25,9 +25,6 @@ export const DetailsGame = () => {
   const { gameId } = useParams();
   const [gameDetails, setGameDetails] = useState(null);
 
-  // const [ano,mes,dia] =
-
-  // {`(${dia}/${mes}/${ano})`}
   useEffect(() => {
     (async () => {
       const details = await RapidApi.getDetailsGame(gameId);

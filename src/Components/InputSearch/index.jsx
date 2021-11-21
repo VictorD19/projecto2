@@ -20,8 +20,8 @@ const InputSearch = ({ page }) => {
               name="paramSearch"
               placeholder={
                 page === "games"
-                  ? "Buscar jogo pelo titulo"
-                  : "Buscar noticia pelo titulo"
+                  ? "Buscar jogo pelo titulo ou descripção"
+                  : "Buscar noticia pelo titulo ou descripção"
               }
             />
             <AutoSubmitInput />

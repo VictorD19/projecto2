@@ -56,32 +56,33 @@ export const GamesProvider = ({ children }) => {
 
   const getNewList = (lista, param,type) => {
     const method = type ==='games' ? "GetListResultGames" : 'GetListResultNews'
-    let tempList = [...lista];
+    let tempList = [];
     if (param.paramSearch) {
       tempList = lista.filter(
-        ({ title }) =>
-          title.toLowerCase().includes(param.paramSearch.toLowerCase())
-        // || description.toLowerCase().includes(param.paramSearch.toLowerCase())
+        ({ title,short_description }) =>
+          title.toLowerCase().includes(param.paramSearch.toLowerCase()) || short_description.toLowerCase().includes(param.paramSearch.toLowerCase())
+        // || 
       );
     }
     dispatch({ method, value: tempList });
   };
 
-  // Lista de games
   useEffect(() => {
     (async () => {
+
       const games = await RapidApi.getGames();
       dispatch({ method: "SetListGames", value: games });
+      
       getNewList(games, state.searchParam,'games');
 
-      // Selecion de um jogo aleatorio
       const randomGame = Math.floor(Math.random() * (games.length - 1));
       const game = games[randomGame];
       dispatch({ method: "FeaturedGame", value: game });
     })();
   }, [state.searchParam]);
 
-  // Lista de noticias
+ 
+
   useEffect(() => {
     (async () => {
       const news = await RapidApi.getNews();
@@ -96,6 +97,7 @@ export const GamesProvider = ({ children }) => {
         getListRow,
         state,
         dispatch,
+        getNewList
       }}
     >
       {children}
@@ -108,9 +110,11 @@ export const useGameData = () => {
     getListRow,
     state,
     dispatch,
+    getNewList
   } = useContext(GamesContext);
   return {
     getListRow,
+    getNewList,
     state,
     dispatch,
   };

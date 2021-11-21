@@ -1,4 +1,4 @@
-import { memo } from "react";
+
 import { CardGames } from "../../Components/CardGame";
 import { Container } from "../../Components/Container";
 import InputSearch from "../../Components/InputSearch";
@@ -7,11 +7,13 @@ import { SectionStyled, TitleStyle } from "./Games.style";
 
 import { LoaderCardGame } from "../../Components/Loaders";
 
-const Home = () => {
-  const { state } = useGameData();
-  const {listResultGames,searchParam} = state
-  const list = [<LoaderCardGame/>,<LoaderCardGame/>,<LoaderCardGame/>,<LoaderCardGame/>,<LoaderCardGame/>,<LoaderCardGame/>,<LoaderCardGame/>,<LoaderCardGame/>]
- 
+const GamesPage = () => {
+  const { state ,getNewList} = useGameData();
+  const {games,listResultGames,searchParam} = state
+  const list = new Array(10)
+  console.log(games);
+
+  const listgames = listResultGames.length !== 0 ? listResultGames : games
 
 
   return (
@@ -19,23 +21,23 @@ const Home = () => {
       <InputSearch page="games" />
       <TitleStyle>
         {searchParam.paramSearch !== ""
-          ? `Resultado para "${searchParam.paramSearch}"`
-          : "Total de Jogos"}
-        ( {listResultGames.length} )
+          ? `Resultado para "${searchParam.paramSearch}" ( ${listResultGames.length} )`
+          : `Total de Jogos ( ${games.length} ) ` }
+      
       </TitleStyle>
 
       {listResultGames.length <= 0 && 
          <div >
-           {list.map(item => item)}
+           {list.map((item,i) => <LoaderCardGame key={i}/>)}
          </div>
     
       }
 
-      {listResultGames.length > 0 && (
+      {listgames.length > 0 && (
         <SectionStyled>
-          {listResultGames.map((game) => (
+          {listgames.map((game,i) => (
             <CardGames
-              key={game.id}
+              key={i}
               id={game.id}
               title={game.title}
               image={game.thumbnail}
@@ -49,4 +51,4 @@ const Home = () => {
   );
 };
 
-export default memo(Home);
+export default GamesPage;
